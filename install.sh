@@ -5,4 +5,5 @@ unzip -d /tmp /tmp/bt.zip
 chmod 755  /tmp/besttrace
 cp  /tmp/besttrace /bin/ -f
 rm -rf /tmp/besttrace*
+rm -rf /tmp/bt.zip
 exit 0
