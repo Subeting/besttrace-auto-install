@@ -1,5 +1,5 @@
 #!/bin/bash
-(apt update;apt install unzip wget -y)||(yum install unzip wget -y)
+(apt update -y;apt install unzip wget -y)||(yum install unzip wget -y)
 wget https://cdn.jsdelivr.net/gh/Subeting/besttrace-auto-install/besttrace4linux.zip -O /tmp/bt.zip
 unzip -d /tmp /tmp/bt.zip
 chmod 755  /tmp/besttrace
