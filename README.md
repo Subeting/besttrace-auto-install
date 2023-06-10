@@ -8,5 +8,5 @@ run `besttrace *YOUR_IP` or  `/bin/besttrace *YOUR_IP`
 
 update:
 ```
-bash <(curl https://cdn.jsdelivr.net/gh/Subeting/besttrace-auto-install/nexttrace.sh.sh)
+bash <(curl https://cdn.jsdelivr.net/gh/Subeting/besttrace-auto-install/nexttrace.sh)
 ```
