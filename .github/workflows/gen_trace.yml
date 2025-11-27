@@ -32,8 +32,8 @@ jobs:
           ipv6_re='([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}'
 
           # Init output files
-          cp trace.head trace4.sh
-          cp trace.head trace6.sh
+          cp -f trace.head trace4.sh
+          cp -f trace.head trace6.sh
 
           # Split lines into IPv4 / IPv6
           while IFS= read -r line; do
