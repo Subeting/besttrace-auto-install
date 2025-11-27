@@ -10,3 +10,8 @@ update:
 ```
 bash <(curl https://cdn.jsdelivr.net/gh/Subeting/besttrace-auto-install/nexttrace.sh); echo "alias ntr=nexttrace"|tee -a ~/.bashrc|bash
 ```
+
+Auto trace with JSON:
+```
+bash <(curl https://cdn.jsdelivr.net/gh/Subeting/besttrace-auto-install/go_trace.sh)
+```
