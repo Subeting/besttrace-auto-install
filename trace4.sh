@@ -1,7 +1,8 @@
 #!/bin/bash
   curl -sL nxtrace.org/nt | bash
   function BenchExec_Traceroute_Core() {
-    /usr/local/bin/nexttrace -j -q 1 -m "$3" -n -g en -c -M "$1"| sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g"|grep -v -e 'NextTrace v' -e 'NextTrace API' -e 'IP Geo Data'|tee -a /tmp/trace/"${4}.json"
+    $filename="${4//[\/\\]/}"
+    /usr/local/bin/nexttrace -j -q 1 -m "$3" -n -g en -c -M "$1"| sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g"|grep -v -e 'NextTrace v' -e 'NextTrace API' -e 'IP Geo Data'|tee -a /tmp/trace/"${filename}.json"
 }
 
 function BenchAPI_Traceroute_Pretty() {
