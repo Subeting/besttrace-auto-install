@@ -1,0 +1,56 @@
+name: Generate Trace Scripts
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"   # every 6 hours, adjust if needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Download LemonBench.sh
+        run: |
+          curl -sSL \
+            https://raw.githubusercontent.com/LemonBench/LemonBench/main/LemonBench.sh \
+            -o LemonBench.sh
+
+      - name: Extract traceroute block and generate scripts
+        run: |
+          # Extract function body
+          awk '/BenchFunc_Traceroute_Full_Pretty\(\)/,/^}/' LemonBench.sh \
+            | sed '1d;$d' > trace.func.raw
+
+          # Keep only lines containing BenchAPI_Traceroute_Pretty
+          grep "BenchAPI_Traceroute_Pretty" trace.func.raw > trace.filtered
+
+          # Regex patterns
+          ipv4_re='([0-9]{1,3}\.){3}[0-9]{1,3}'
+          ipv6_re='([0-9a-fA-F]{0,4}:){1,7}[0-9a-fA-F]{0,4}'
+
+          # Init output files
+          cp trace.head trace4.sh
+          cp trace.head trace6.sh
+
+          # Split lines into IPv4 / IPv6
+          while IFS= read -r line; do
+            if [[ $line =~ $ipv4_re ]]; then
+              echo "$line" >> trace4.sh
+            fi
+            if [[ $line =~ $ipv6_re ]]; then
+              echo "$line" >> trace6.sh
+            fi
+          done < trace.filtered
+
+      - name: Make files executable
+        run: |
+          chmod +x trace4.sh trace6.sh
+
+      - name: Commit results
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update trace4.sh & trace6.sh"
+          file_pattern: trace4.sh trace6.sh
