@@ -90,3 +90,7 @@ GlobalVar_TracerouteMaxHop=30
         BenchAPI_Traceroute_Pretty "87.226.162.77" "${GlobalVar_TracerouteMode}" "${GlobalVar_TracerouteMaxHop}" "俄罗斯-莫斯科RT"
         BenchAPI_Traceroute_Pretty "217.150.32.2" "${GlobalVar_TracerouteMode}" "${GlobalVar_TracerouteMaxHop}" "俄罗斯-莫斯科TTK"
         BenchAPI_Traceroute_Pretty "195.34.32.71" "${GlobalVar_TracerouteMode}" "${GlobalVar_TracerouteMaxHop}" "俄罗斯-莫斯科MTS"
+        BenchAPI_Traceroute_Pretty "1.0.0.1" "${GlobalVar_TracerouteMode}" "${GlobalVar_TracerouteMaxHop}" "ANYCAST-Cloudflare"
+        BenchAPI_Traceroute_Pretty "8.8.8.8" "${GlobalVar_TracerouteMode}" "${GlobalVar_TracerouteMaxHop}" "ANYCAST-Google"
+        BenchAPI_Traceroute_Pretty "9.9.9.9" "${GlobalVar_TracerouteMode}" "${GlobalVar_TracerouteMaxHop}" "ANYCAST-Quad9"
+        BenchAPI_Traceroute_Pretty "fastly.com" "${GlobalVar_TracerouteMode}" "${GlobalVar_TracerouteMaxHop}" "ANYCAST-Fastly"
